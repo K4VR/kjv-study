@@ -31,13 +31,21 @@ jobs:
       - name: Install
         run: npm ci
 
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
       - name: Build
         env:
           GITHUB_PAGES: '1'
         run: npm run build
 
       - name: SPA fallback for GitHub Pages
-        run: cp dist/index.html dist/404.html
+        run: |
+          cp dist/index.html dist/404.html
+          touch dist/.nojekyll
+          test -s dist/data/kjv/isaiah.json
+          test -s dist/index.html
+          grep -q '/kjv-study/' dist/index.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

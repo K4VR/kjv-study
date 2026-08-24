@@ -14,9 +14,15 @@ A local-first King James Version Bible study tool organized by book.
 
 ## Live site (GitHub Pages)
 
-After Pages is enabled (Settings → Pages → Source: **GitHub Actions**):
-
 **https://k4vr.github.io/kjv-study/**
+
+GitHub must build this app with **GitHub Actions**, not “Deploy from a branch”:
+
+1. Open [Settings → Pages](https://github.com/K4VR/kjv-study/settings/pages)
+2. Under **Build and deployment** → **Source**, choose **GitHub Actions**
+3. After each push to `main`, wait for the **Deploy GitHub Pages** workflow to show a green check, then hard-refresh the site (Ctrl+Shift+R or Cmd+Shift+R)
+
+A blank white page means the unbuilt source `index.html` is being served. A “Failed to load …” chapter error means the Bible JSON was not published at `/kjv-study/data/kjv/`. Both are fixed by using GitHub Actions as the Pages source and letting that workflow finish.
 
 ## Develop
 
