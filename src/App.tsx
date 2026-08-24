@@ -8,9 +8,11 @@ import { MyStudyPage } from './pages/MyStudyPage'
 import { ThemeDetailPage } from './pages/ThemeDetailPage'
 import { ThemesPage } from './pages/ThemesPage'
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
+
 export default function App() {
   return (
-    <BrowserRouter basename="/my-cursor-projects">
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<AppShell />}>
           <Route index element={<LibraryPage />} />
